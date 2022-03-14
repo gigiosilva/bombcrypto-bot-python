@@ -170,7 +170,7 @@ def clickBtn(img, timeout=3, threshold = ct['default']):
 
 def printSreen():
     with mss.mss() as sct:
-        monitor = sct.monitors[0]
+        monitor = sct.monitors[3]
         sct_img = np.array(sct.grab(monitor))
         # The screen part to capture
         # monitor = {"top": 160, "left": 160, "width": 1000, "height": 135}
@@ -343,6 +343,12 @@ def login():
         #TODO mto ele da erro e poco o botao n abre
         # time.sleep(10)
 
+    if clickBtn(images['login-wallet'], timeout = 10):
+        logger('🎉 Login wallet button detected, logging in!')
+        login_attempts = login_attempts + 1
+        #TODO mto ele da erro e poco o botao n abre
+        # time.sleep(10)
+
     if clickBtn(images['select-wallet-2'], timeout=8):
         # sometimes the sign popup appears imediately
         login_attempts = login_attempts + 1
@@ -491,9 +497,9 @@ def main():
         if now - last["check_for_captcha"] > addRandomness(t['check_for_captcha'] * 60):
             last["check_for_captcha"] = now
 
-        if now - last["heroes"] > addRandomness(t['send_heroes_for_work'] * 60):
-            last["heroes"] = now
-            refreshHeroes()
+        # if now - last["heroes"] > addRandomness(t['send_heroes_for_work'] * 60):
+        #     last["heroes"] = now
+        #     refreshHeroes()
 
         if now - last["login"] > addRandomness(t['check_for_login'] * 60):
             sys.stdout.flush()
