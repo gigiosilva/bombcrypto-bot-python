@@ -497,9 +497,9 @@ def main():
         if now - last["check_for_captcha"] > addRandomness(t['check_for_captcha'] * 60):
             last["check_for_captcha"] = now
 
-        # if now - last["heroes"] > addRandomness(t['send_heroes_for_work'] * 60):
-        #     last["heroes"] = now
-        #     refreshHeroes()
+        if now - last["heroes"] > addRandomness(t['send_heroes_for_work'] * 60):
+            last["heroes"] = now
+            refreshHeroes()
 
         if now - last["login"] > addRandomness(t['check_for_login'] * 60):
             sys.stdout.flush()
