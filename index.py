@@ -170,7 +170,7 @@ def clickBtn(img, timeout=3, threshold = ct['default']):
 
 def printSreen():
     with mss.mss() as sct:
-        monitor = sct.monitors[3]
+        monitor = sct.monitors[0]
         sct_img = np.array(sct.grab(monitor))
         # The screen part to capture
         # monitor = {"top": 160, "left": 160, "width": 1000, "height": 135}
